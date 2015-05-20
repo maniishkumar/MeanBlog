@@ -66,9 +66,11 @@ Just fetch the changes and merge them into your project with git.
       index.jade        --> main page for app
       layout.jade       --> doctype, title, head boilerplate
       partials/         --> angular view partials (partial jade templates)
-        partial1.jade
-        partial2.jade
-
+        index.jade
+        addPost.jade
+        deletePost.jade
+        editPost.jade
+        readPost.jade
 
 
 ## Example App
