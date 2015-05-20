@@ -1,0 +1,45 @@
+main-color = #fa5b4d
+background-color = #faf9f0
+
+body
+  font-family 'Georgia'
+  color #444
+
+header
+  font-family 'Quicksand'
+  padding 17px 10px
+  color #ccc
+  font-size 25px
+  text-align center
+  background-color chocolate
+
+/* Nest rules */
+nav
+  margin 10px
+
+  ul
+    list-style-type none
+    background-color #555555
+
+    > li
+      display inline-block
+      margin 10px
+      color #ECE9E9
+
+      > a
+        display inline-block
+        color #ECE9E9
+
+      &.current
+        background-color lightblue
+footer
+  text-align center
+  font-weight bold
+  margin-top 6%
+
+.container
+  font-size normal
+
+.main-content
+  margin-left 5%
+  text-align left

@@ -12,16 +12,9 @@ var express = require('express'),
   api = require('./routes/api'),
   http = require('http'),
   path = require('path'),
-  stylus = require('stylus'),
-  nib = require('nib');
+  stylus = require('stylus');
 
 var app = module.exports = express();
-function compile(str, path) {
-  return stylus(str)
-      .set('filename', path)
-      .use(nib())
-}
-
 
 /**
  * Configuration
@@ -34,14 +27,27 @@ app.set('view engine', 'jade');
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+    stylus.middleware({
+      src:  __dirname + "/public",
+      dest: __dirname + "/public/stylesheets",
+      debug: true,
+      compile : function(str, path) {
+        console.log('compiling');
+        return stylus(str)
+          .set('filename', path)
+          .set('warn', true)
+          .set('compress', true);
+      }
+    })
+);
+
+app.use(express.static(path.join(__dirname, '/public')));
+
 
 var env = process.env.NODE_ENV || 'development';
-app.use(stylus.middleware(
-    { src: __dirname + '/public'
-      , compile: compile
-    }
-))
+
 
 // development only
 if (env === 'development') {

@@ -1,14 +1,25 @@
-!!!
+!!!5
 html(ng-app="myApp")
   head
     meta(charset='utf8')
     base(href='/')
-    title #{title} - Angular Express Seed App
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/css/app.css')
+    title Angular Express Seed App
+    link(rel='stylesheet', href='/css/style.css')
   body
-    block content
-
+    header
+      h1 MeanBlog
+    .container
+      div
+        nav
+          ul
+            li
+              a(href='/') Home
+            li
+              a(href='/addPost') Add a new post
+      .main-content
+        block content
+      .sidebar
+        block sidebar
     footer
       p
         div MeanBlog App: v
