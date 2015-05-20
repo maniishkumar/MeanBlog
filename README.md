@@ -1,4 +1,4 @@
-# Angular Express Seed
+# MEAN Blog
 
 Start an awesome app with AngularJS on the front, Express + Node on the back. This project is an
 application skeleton for a typical [AngularJS](http://angularjs.org/) web app for those who want
@@ -15,7 +15,7 @@ _Note: Although Jade supports interpolation, you should be doing that mostly on 
 server and browser templating will convolute your app. Instead, use Jade as a syntactic sugar for
 HTML, and let AngularJS take care of interpolation on the browser side._
 
-## How to use angular-express-seed
+## How to use MeanBlog
 
 Clone the angular-express-seed repository, run `npm install` to grab the dependencies, and start hacking!
 
@@ -24,6 +24,11 @@ Clone the angular-express-seed repository, run `npm install` to grab the depende
 Runs like a typical express app:
 
     node app.js
+
+### Integration with Database
+
+Coming soon!
+We will integrate it with MongoDB.
 
 ### Running tests
 
