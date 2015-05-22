@@ -42,3 +42,8 @@ footer {
   margin-left: 5%;
   text-align: left;
 }
+.main-content > a {
+  font-size: x-small;
+  color: #8a2be2;
+  text-decoration: underline;
+}

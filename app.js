@@ -6,19 +6,22 @@
 var express = require('express'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  errorHandler = require('errorHandler'),
+  errorhandler = require('errorhandler'),
   morgan = require('morgan'),
   routes = require('./routes'),
   api = require('./routes/api'),
   http = require('http'),
   path = require('path'),
-  stylus = require('stylus');
+  stylus = require('stylus'),
+  mongoose = require('mongoose');
 
 var app = module.exports = express();
 
 /**
  * Configuration
  */
+
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -27,7 +30,13 @@ app.set('view engine', 'jade');
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(methodOverride());
-
+mongoose.connect('mongodb://localhost/MeanBlog', function(err) {
+  if(err) {
+    console.log('connection error', err);
+  } else {
+    console.log('connection successful');
+  }
+});
 app.use(
     stylus.middleware({
       src:  __dirname + "/public",
@@ -51,7 +60,7 @@ var env = process.env.NODE_ENV || 'development';
 
 // development only
 if (env === 'development') {
-  app.use(errorHandler());
+  app.use(errorhandler());
 }
 
 // production only
@@ -69,8 +78,6 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
-app.get('/api/name', api.name);
-
 app.get('/api/posts', api.posts);
 
 app.get('/api/post/:id', api.post);
